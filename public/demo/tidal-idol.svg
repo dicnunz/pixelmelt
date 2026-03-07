@@ -1,0 +1,24 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="idol-stone" x1="238" y1="188" x2="898" y2="972" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D7E6FF"/>
+      <stop offset="0.45" stop-color="#8697BB"/>
+      <stop offset="1" stop-color="#293349"/>
+    </linearGradient>
+    <linearGradient id="idol-water" x1="328" y1="322" x2="840" y2="934" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#CBFFF2"/>
+      <stop offset="0.46" stop-color="#5CA9FF"/>
+      <stop offset="1" stop-color="#245EA3"/>
+    </linearGradient>
+  </defs>
+  <path d="M630 104C462 102 328 194 280 348C220 538 318 784 488 902C420 972 454 1054 566 1082C688 1110 846 1036 894 910C926 826 906 754 840 708C918 624 960 516 954 402C944 224 812 106 630 104Z" fill="url(#idol-stone)"/>
+  <path d="M572 264C476 280 410 350 394 452C374 574 440 672 560 720C674 766 820 726 878 634C942 532 916 360 826 296C760 250 650 244 572 264Z" fill="#0A101A"/>
+  <path d="M502 470C470 476 446 508 450 544C454 590 500 624 548 614C594 604 622 548 604 506C588 470 546 460 502 470Z" fill="#C7EDFF"/>
+  <path d="M702 452C652 456 614 498 620 548C628 604 680 638 736 626C788 612 820 564 806 514C794 472 756 446 702 452Z" fill="#C7EDFF"/>
+  <path d="M446 766C532 864 728 886 850 804C908 764 946 704 958 640C900 650 816 652 714 640C660 724 572 748 446 766Z" fill="url(#idol-water)"/>
+  <path d="M610 380L530 1006L614 1068L700 380H610Z" fill="#5EA7FF" fill-opacity="0.92"/>
+  <path d="M458 318C498 230 592 168 694 170C760 172 814 194 860 236C786 150 702 112 612 112C454 112 332 218 294 368C328 338 382 320 458 318Z" fill="#EAF7FF" fill-opacity="0.55"/>
+  <path d="M762 654C714 744 606 800 498 806C550 866 658 904 770 884C864 866 932 814 964 734C900 718 832 694 762 654Z" fill="#C4FFF1" fill-opacity="0.8"/>
+  <circle cx="308" cy="690" r="28" fill="#5EA7FF"/>
+  <circle cx="870" cy="264" r="22" fill="#C8FFF3"/>
+</svg>

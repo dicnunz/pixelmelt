@@ -1,0 +1,24 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="molten-body" x1="310" y1="210" x2="930" y2="980" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FCD27A"/>
+      <stop offset="0.42" stop-color="#FF8D54"/>
+      <stop offset="1" stop-color="#C94324"/>
+    </linearGradient>
+    <linearGradient id="molten-cold" x1="296" y1="756" x2="874" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#57A6FF"/>
+      <stop offset="1" stop-color="#C2FFF0"/>
+    </linearGradient>
+  </defs>
+  <path d="M590 112C457 122 342 196 292 344C240 498 282 690 412 774C356 830 340 922 406 984C498 1072 674 1030 764 936C824 874 848 784 822 710C914 652 964 532 944 426C920 290 780 96 590 112Z" fill="url(#molten-body)"/>
+  <path d="M544 278C468 290 412 344 388 430C360 534 398 640 498 694C592 744 716 740 784 662C852 584 866 464 810 374C754 286 644 264 544 278Z" fill="#10151D"/>
+  <path d="M498 430C474 422 448 444 442 476C436 514 458 548 492 560C536 576 570 536 562 490C558 464 534 440 498 430Z" fill="#EAF7FF"/>
+  <path d="M700 430C666 420 636 448 636 486C636 540 684 578 732 558C776 540 792 484 762 448C748 430 724 420 700 430Z" fill="#EAF7FF"/>
+  <path d="M502 826C426 908 430 970 502 1004C604 1052 776 1004 828 896C852 848 836 810 786 794C710 770 560 768 502 826Z" fill="url(#molten-cold)" opacity="0.92"/>
+  <path d="M482 624C548 670 654 676 722 634C768 606 784 582 778 552C706 580 518 580 436 544C430 578 440 600 482 624Z" fill="#FFCE76"/>
+  <path d="M584 724L520 1092L578 1038L648 726L584 724Z" fill="#FF8B4B"/>
+  <path d="M694 720L728 1026L770 996L758 720H694Z" fill="#FFB067"/>
+  <circle cx="862" cy="356" r="34" fill="#FFD18D" fill-opacity="0.9"/>
+  <circle cx="896" cy="414" r="16" fill="#59A9FF"/>
+  <circle cx="314" cy="508" r="20" fill="#59A9FF" fill-opacity="0.8"/>
+</svg>

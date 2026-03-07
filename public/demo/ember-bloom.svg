@@ -1,0 +1,26 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="petal-hot" x1="390" y1="250" x2="858" y2="878" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFD38A"/>
+      <stop offset="0.38" stop-color="#FF9452"/>
+      <stop offset="1" stop-color="#DB3E3E"/>
+    </linearGradient>
+    <linearGradient id="petal-cool" x1="244" y1="432" x2="840" y2="986" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C8FFF4"/>
+      <stop offset="0.48" stop-color="#55B7FF"/>
+      <stop offset="1" stop-color="#264E9E"/>
+    </linearGradient>
+  </defs>
+  <circle cx="600" cy="600" r="110" fill="#0B1018"/>
+  <path d="M600 154C668 234 706 356 684 478C662 602 588 680 600 836C510 698 414 646 362 532C302 402 346 220 478 158C516 140 558 136 600 154Z" fill="url(#petal-hot)"/>
+  <path d="M1026 520C958 612 844 674 718 662C590 648 508 574 360 586C484 486 534 374 642 312C770 236 952 290 1022 422C1040 454 1044 488 1026 520Z" fill="url(#petal-hot)"/>
+  <path d="M818 1032C706 1010 596 944 542 830C486 710 510 600 434 470C550 534 650 530 768 590C904 660 992 828 924 958C906 992 874 1018 818 1032Z" fill="url(#petal-cool)"/>
+  <path d="M190 726C270 608 398 534 530 546C662 558 748 634 904 620C770 724 718 838 596 900C448 976 256 940 194 814C184 792 178 760 190 726Z" fill="url(#petal-cool)"/>
+  <path d="M408 960C358 848 360 720 432 624C506 526 620 490 706 354C712 500 772 580 792 700C818 850 736 1012 594 1042C536 1054 470 1030 408 960Z" fill="#FF9B53" fill-opacity="0.92"/>
+  <circle cx="600" cy="600" r="170" fill="#141B26"/>
+  <path d="M508 506C470 530 456 580 476 620C504 678 578 694 632 660C682 628 696 558 666 514C638 472 562 470 508 506Z" fill="#F0FAFF"/>
+  <path d="M602 366L588 1032L648 1056L678 374L602 366Z" fill="#FFB362"/>
+  <circle cx="918" cy="396" r="28" fill="#FFD38A"/>
+  <circle cx="292" cy="430" r="20" fill="#5AB0FF"/>
+  <circle cx="934" cy="770" r="18" fill="#D4FFF6"/>
+</svg>
