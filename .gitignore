@@ -12,6 +12,7 @@ dist
 dist-ssr
 coverage
 output
+progress.md
 *.local
 
 # Editor directories and files
