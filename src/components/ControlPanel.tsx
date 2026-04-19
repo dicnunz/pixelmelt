@@ -51,6 +51,8 @@ export function ControlPanel({
 }: ControlPanelProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isDragging, setIsDragging] = useState(false)
+  const activeDemo = demos.find((demo) => demo.id === selectedDemoId) ?? null
+  const usingCustomSource = activeDemo === null
 
   const recordLabel =
     recording.status === 'recording'
@@ -60,6 +62,8 @@ export function ControlPanel({
         : 'Record 8s clip'
 
   const interactionDisabled = sceneStatus === 'booting' || sceneStatus === 'loading'
+  const runControlsDisabled = sceneStatus !== 'ready'
+  const recordDisabled = runControlsDisabled || recording.status === 'recording' || recording.status === 'saving'
 
   return (
     <aside className="pm-panel pm-scrollbar flex h-full min-h-[calc(100vh-3rem)] flex-col overflow-y-auto rounded-[28px] p-6 text-sm text-white/90">
@@ -80,11 +84,20 @@ export function ControlPanel({
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Input</h2>
-            <p className="text-xs text-[var(--pm-text-muted)]">Upload one image or start from a seeded demo scene.</p>
+            <p className="text-xs text-[var(--pm-text-muted)]">Upload once, rebuild with presets, then sculpt and export from the same source.</p>
           </div>
           <span className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-white/55">
             {sceneStatus}
           </span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-white/60">
+          {['pick source', 'rebuild preset', 'export clip'].map((step, index) => (
+            <div key={step} className="rounded-[18px] border border-white/8 bg-black/10 px-3 py-2">
+              <div className="font-mono text-[0.62rem] text-white/30">0{index + 1}</div>
+              <div className="mt-1 leading-4">{step}</div>
+            </div>
+          ))}
         </div>
 
         <button
@@ -144,10 +157,23 @@ export function ControlPanel({
           }}
         />
 
+        <div className="rounded-[22px] border border-white/8 bg-black/10 p-3">
+          <div className="flex items-center justify-between text-[0.72rem] uppercase tracking-[0.2em] text-white/45">
+            <span>Current source</span>
+            <span className="font-mono">{usingCustomSource ? 'upload' : 'demo'}</span>
+          </div>
+          <div className="mt-2 text-sm font-semibold text-white">{sourceLabel}</div>
+          <p className="mt-1 text-xs leading-5 text-[var(--pm-text-muted)]">
+            {usingCustomSource
+              ? 'Using your upload. Presets will keep rebuilding from this image until you swap the source.'
+              : activeDemo.description}
+          </p>
+        </div>
+
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs uppercase tracking-[0.2em] text-white/45">Seeded demos</span>
-            <span className="font-mono text-[0.72rem] text-white/45">{sourceLabel}</span>
+            <span className="font-mono text-[0.72rem] text-white/45">instant start</span>
           </div>
           <div className="grid grid-cols-3 gap-2">
             {demos.map((demo) => (
@@ -170,7 +196,7 @@ export function ControlPanel({
             ))}
           </div>
           <p className="text-xs leading-5 text-[var(--pm-text-muted)]">
-            {demos.find((demo) => demo.id === selectedDemoId)?.description}
+            Faces, masks, logos, flowers, and bold silhouettes with clean negative space usually produce the strongest melts.
           </p>
         </div>
 
@@ -273,31 +299,41 @@ export function ControlPanel({
       <section className="mb-6 rounded-3xl border border-white/8 bg-white/[0.03] p-4">
         <div className="mb-3">
           <h2 className="text-base font-semibold text-white">Run</h2>
-          <p className="text-xs text-[var(--pm-text-muted)]">Pause to inspect, reset to re-seed, export straight from the canvas.</p>
+          <p className="text-xs text-[var(--pm-text-muted)]">Pause to inspect, reset to re-seed, then export the exact stage you see as an 8-second WebM.</p>
         </div>
         <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={onPauseToggle}
-            className="rounded-[18px] border border-white/12 bg-white/[0.05] px-4 py-3 font-semibold text-white transition hover:border-white/22 hover:bg-white/[0.08]"
+            disabled={runControlsDisabled}
+            className={cn(
+              'rounded-[18px] border border-white/12 bg-white/[0.05] px-4 py-3 font-semibold text-white transition',
+              runControlsDisabled ? 'cursor-not-allowed opacity-50' : 'hover:border-white/22 hover:bg-white/[0.08]',
+            )}
           >
             {paused ? 'Resume sim' : 'Pause sim'}
           </button>
           <button
             type="button"
             onClick={onReset}
-            className="rounded-[18px] border border-white/12 bg-white/[0.05] px-4 py-3 font-semibold text-white transition hover:border-white/22 hover:bg-white/[0.08]"
+            disabled={runControlsDisabled}
+            className={cn(
+              'rounded-[18px] border border-white/12 bg-white/[0.05] px-4 py-3 font-semibold text-white transition',
+              runControlsDisabled ? 'cursor-not-allowed opacity-50' : 'hover:border-white/22 hover:bg-white/[0.08]',
+            )}
           >
             Reset scene
           </button>
           <button
             type="button"
             onClick={onRecord}
-            disabled={recording.status === 'recording' || recording.status === 'saving'}
+            disabled={recordDisabled}
             className={cn(
               'col-span-2 rounded-[18px] border px-4 py-3 font-semibold transition',
-              recording.status === 'recording' || recording.status === 'saving'
-                ? 'cursor-progress border-amber-300/20 bg-amber-300/10 text-amber-100'
+              recordDisabled
+                ? recording.status === 'recording' || recording.status === 'saving'
+                  ? 'cursor-progress border-amber-300/20 bg-amber-300/10 text-amber-100'
+                  : 'cursor-not-allowed border-white/10 bg-white/[0.03] text-white/45'
                 : 'border-[var(--pm-warm)] bg-[rgba(255,148,71,0.12)] text-white hover:bg-[rgba(255,148,71,0.2)]',
             )}
           >

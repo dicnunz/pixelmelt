@@ -39,6 +39,20 @@ function formatCompactCount(value: number): string {
   return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(value)
 }
 
+function formatUiLabel(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
+
+function slugifyFilenamePart(value: string): string {
+  const normalized = value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+
+  return normalized || 'untitled'
+}
+
 export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(function CanvasStage(
   { controller, activeTool, activePreset, brushSize, brushIntensity, sourceLabel, paused, sceneStatus },
   ref,
@@ -194,7 +208,7 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
 
   async function recordClip(): Promise<void> {
     const canvas = displayCanvasRef.current
-    if (!canvas) {
+    if (!canvas || sceneStatus !== 'ready' || !latestPayloadRef.current) {
       return
     }
 
@@ -229,7 +243,8 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
       })
 
       const timestamp = new Date().toISOString().replaceAll(':', '-')
-      downloadBlob(blob, `pixelmelt-${activePreset}-${timestamp}.webm`)
+      const sourceSlug = slugifyFilenamePart(sourceLabel)
+      downloadBlob(blob, `pixelmelt-${sourceSlug}-${activePreset}-${timestamp}.webm`)
 
       usePixelMeltStore.getState().setRecording({
         status: 'done',
@@ -259,6 +274,7 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
 
   const metrics = hudPayload?.metrics
   const hasFrame = Boolean(hudPayload)
+  const exportDisabled = sceneStatus !== 'ready' || !hasFrame || recording.status === 'recording' || recording.status === 'saving'
 
   return (
     <section className="pm-panel relative flex min-h-[calc(100vh-3rem)] flex-1 flex-col overflow-hidden rounded-[32px]">
@@ -268,19 +284,39 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
           <div className="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-white/45">Stage</div>
           <div className="mt-1 text-lg font-semibold text-white">{sourceLabel}</div>
           <div className="text-sm text-[var(--pm-text-muted)]">
-            {activePreset} preset • {activeTool} tool • {paused ? 'paused' : 'live worker sim'}
+            {formatUiLabel(activePreset)} scene • {formatUiLabel(activeTool)} brush • {paused ? 'paused' : 'live worker sim'}
           </div>
         </div>
         <button
           type="button"
           onClick={() => void recordClip()}
-          className="rounded-full border border-[var(--pm-warm)] bg-[rgba(255,148,71,0.12)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[rgba(255,148,71,0.2)]"
+          disabled={exportDisabled}
+          className={cn(
+            'rounded-full border px-4 py-2 text-sm font-semibold transition',
+            exportDisabled
+              ? 'cursor-not-allowed border-white/10 bg-white/[0.03] text-white/45'
+              : 'border-[var(--pm-warm)] bg-[rgba(255,148,71,0.12)] text-white hover:bg-[rgba(255,148,71,0.2)]',
+          )}
         >
           Export 8s WebM
         </button>
       </div>
 
       <div className="relative flex flex-1 items-center justify-center px-6 py-6">
+        {sceneStatus === 'ready' && (
+          <div className="pointer-events-none absolute left-6 top-6 hidden max-w-sm xl:block">
+            <div className="rounded-[24px] border border-white/8 bg-[rgba(7,11,19,0.72)] px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.22)] backdrop-blur">
+              <div className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-white/40">Quick pass</div>
+              <p className="mt-2 text-sm leading-6 text-white/85">
+                Pick a bold source, rebuild with a preset, then drag with Push or click with Spark before exporting the exact frame state you like.
+              </p>
+              <p className="mt-2 text-xs leading-5 text-[var(--pm-text-muted)]">
+                Best with faces, masks, flowers, logos, and silhouettes that have clear contrast and some empty space around them.
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="relative flex aspect-square w-full max-w-[880px] items-center justify-center rounded-[30px] border border-white/10 bg-[rgba(2,5,11,0.72)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
           <canvas
             ref={displayCanvasRef}

@@ -6,6 +6,8 @@ PixelMelt is a desktop-first, local-only web app that turns a single image into 
 
 The entire product runs client-side. There is no backend, no auth, no database, and no paid API dependency.
 
+Best results come from faces, masks, flowers, logos, and other bold silhouettes with clear contrast and some negative space around the subject.
+
 ## Highlights
 
 - Upload one image and convert it into a 168x168 material map.
@@ -47,6 +49,15 @@ npm run preview
 npm run check
 ```
 
+## First Run In 20 Seconds
+
+1. Launch the app. `Molten Echo` loads automatically.
+2. Click `Flood` or `Burn` to see how the same source rebuilds into a different scene.
+3. Drag on the stage with `Push`, then switch to `Spark` and click into the hot areas.
+4. Hit `Export 8s WebM` after you like the motion.
+
+If the export controls are disabled, wait for the stage to finish loading and show the first live frame.
+
 ## Demo Flow
 
 1. Launch the app. `Molten Echo` loads automatically.
@@ -56,6 +67,13 @@ npm run check
 5. Switch to `Erase` to carve vents or remove buildup.
 6. Upload your own image with the drop zone or file picker.
 7. Click `Record 8s clip` to export a WebM of the live simulation.
+
+## Source Image Tips
+
+- High-contrast subjects read best at `168x168`.
+- Clear silhouettes usually produce the most dramatic melt and burn passes.
+- Transparent or simple backgrounds convert more cleanly than busy photos.
+- Portraits, icons, flowers, masks, and graphic shapes are the sweet spot.
 
 ## How It Works
 
@@ -97,7 +115,7 @@ The canvas renderer in [`src/components/CanvasStage.tsx`](./src/components/Canva
 
 ### 4. Clip Export
 
-PixelMelt records directly from the display canvas using `canvas.captureStream()` and `MediaRecorder`. Export is intentionally fixed to 8 seconds so the output is lightweight and easy to share.
+PixelMelt records directly from the display canvas using `canvas.captureStream()` and `MediaRecorder`. Export is intentionally fixed to 8 seconds so the output is lightweight and easy to share, and the downloaded file name includes the active source and preset.
 
 ## Project Structure
 
