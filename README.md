@@ -1,5 +1,7 @@
 # PixelMelt
 
+![PixelMelt generated seed source](./docs/generated/pixelmelt-astral-sigil.png)
+
 ![PixelMelt demo](./docs/pixelmelt-demo.png)
 
 PixelMelt is a desktop-first, local-only web app that turns a single image into a live falling-material simulation. Upload an image, convert it into a low-resolution material field, then melt it, flood it, burn it, poke it, and export an 8-second WebM clip without leaving the browser.
@@ -15,7 +17,7 @@ Best results come from faces, masks, flowers, logos, and other bold silhouettes 
 - Switch between three scene presets: `Melt`, `Flood`, and `Burn`.
 - Interact directly with the simulation using `Push`, `Spark`, and `Erase`.
 - Export an 8-second WebM clip from the live canvas.
-- Start instantly with three seeded demo images included in the repo.
+- Start instantly with four seeded demo images included in the repo, including the generated `Astral Sigil` mask.
 - Deploy the build output as a static site.
 
 ## Stack
@@ -51,7 +53,7 @@ npm run check
 
 ## First Run In 20 Seconds
 
-1. Launch the app. `Molten Echo` loads automatically.
+1. Launch the app. `Astral Sigil` loads automatically.
 2. Click `Flood` or `Burn` to see how the same source rebuilds into a different scene.
 3. Drag on the stage with `Push`, then switch to `Spark` and click into the hot areas.
 4. Hit `Export 8s WebM` after you like the motion.
@@ -60,7 +62,7 @@ If the export controls are disabled, wait for the stage to finish loading and sh
 
 ## Demo Flow
 
-1. Launch the app. `Molten Echo` loads automatically.
+1. Launch the app. `Astral Sigil` loads automatically.
 2. Click `Melt`, `Flood`, or `Burn` to rebuild the scene from the same source image.
 3. Drag on the stage with `Push` to shove loose material around.
 4. Switch to `Spark` and click into the scene to create ember bursts and smoke.
@@ -73,6 +75,7 @@ If the export controls are disabled, wait for the stage to finish loading and sh
 - High-contrast subjects read best at `168x168`.
 - Clear silhouettes usually produce the most dramatic melt and burn passes.
 - Transparent or simple backgrounds convert more cleanly than busy photos.
+- The included `Astral Sigil` source is a good stress test: sharp glass edges, black negative space, and hot stone details make the burn and melt presets visibly different.
 - Portraits, icons, flowers, masks, and graphic shapes are the sweet spot.
 
 ## How It Works
@@ -120,7 +123,7 @@ PixelMelt records directly from the display canvas using `canvas.captureStream()
 ## Project Structure
 
 ```text
-public/demo/                  Seeded SVG demo images
+public/demo/                  Seeded SVG/PNG demo images
 docs/pixelmelt-demo.png       README screenshot
 src/components/               React UI and canvas stage
 src/lib/                      Worker bridge, rasterizer, recorder, helpers
@@ -155,4 +158,4 @@ Deploy the resulting `dist/` directory to any static host. No environment variab
 
 ## License
 
-This repository currently has no explicit license file. Add one before public distribution if you want to define reuse terms.
+MIT

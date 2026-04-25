@@ -10,6 +10,12 @@ import { usePixelMeltStore } from '@/store/use-pixelmelt-store'
 
 const DEMOS: DemoScene[] = [
   {
+    id: 'astral-sigil',
+    name: 'Astral Sigil',
+    description: 'Generated glass-and-stone mask tuned for sharp silhouettes, hot edges, and dramatic burn passes.',
+    src: '/demo/astral-sigil.png',
+  },
+  {
     id: 'molten-echo',
     name: 'Molten Echo',
     description: 'A warm mask built for dramatic melt drips and ember seams.',

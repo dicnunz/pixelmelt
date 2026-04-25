@@ -39,8 +39,8 @@ export const usePixelMeltStore = create<PixelMeltState>((set) => ({
   brushSize: 6,
   brushIntensity: 0.72,
   paused: false,
-  sourceLabel: 'Molten Echo',
-  selectedDemoId: 'molten-echo',
+  sourceLabel: 'Astral Sigil',
+  selectedDemoId: 'astral-sigil',
   sceneStatus: 'booting',
   lastError: null,
   recording: {
