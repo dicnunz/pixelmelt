@@ -36,6 +36,7 @@ interface CursorState {
 }
 
 const SUPPORT_RECEIPT_URL = 'https://nicdunz.gumroad.com/l/smrimu'
+const BROWSER_OPERATOR_OS_URL = 'https://nicdunz.gumroad.com/l/agent-browser-operator-os'
 const MINI_AUDIT_URL = 'https://nicdunz.gumroad.com/l/agent-workflow-mini-audit'
 const WORKFLOW_AUDIT_URL = 'https://nicdunz.gumroad.com/l/agent-workflow-audit'
 
@@ -311,7 +312,8 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
             <div className="max-w-[24rem] rounded-2xl border border-[var(--pm-warm)]/35 bg-[rgba(255,148,71,0.08)] px-3 py-2 text-right">
               <div className="text-sm font-semibold text-white">Optional export audit</div>
               <p className="mt-1 text-xs leading-5 text-[var(--pm-text-muted)]">
-                Redacted static demos only. No private brand files, API keys, or runtime AI credentials.
+                Redacted static demos only. No private brand files, API keys, runtime AI credentials,
+                Chrome plugin repair, guaranteed automation, account access, custom setup, calls, or public posting.
               </p>
               <div className="mt-2 flex flex-wrap justify-end gap-2">
                 <a
@@ -321,6 +323,14 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
                   className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/85 transition hover:border-white/30 hover:text-white"
                 >
                   $5 receipt
+                </a>
+                <a
+                  href={BROWSER_OPERATOR_OS_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-[var(--pm-accent)]/35 bg-[rgba(109,226,196,0.1)] px-3 py-1 text-xs font-semibold text-white transition hover:bg-[rgba(109,226,196,0.18)]"
+                >
+                  Operator OS $39
                 </a>
                 <a
                   href={MINI_AUDIT_URL}

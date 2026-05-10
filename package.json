@@ -1,11 +1,15 @@
 {
   "name": "pixelmelt",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.2",
   "funding": [
     {
       "type": "custom",
       "url": "https://nicdunz.gumroad.com/l/smrimu"
+    },
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/agent-browser-operator-os"
     },
     {
       "type": "custom",

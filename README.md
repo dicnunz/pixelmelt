@@ -22,12 +22,14 @@ Best results come from faces, masks, flowers, logos, and other bold silhouettes 
 
 If PixelMelt saves you time, the smallest paid support path is the $5 Codex run receipt: <https://nicdunz.gumroad.com/l/smrimu>.
 
+For self-serve browser/account/public-action control templates around export proof, approval lanes, handoffs, and go/no-go checks, use Agent Browser Operator OS: <https://nicdunz.gumroad.com/l/agent-browser-operator-os>.
+
 For browser-visual export prototypes that need a written review, there are also optional no-call audit paths:
 
 - Mini audit: <https://nicdunz.gumroad.com/l/agent-workflow-mini-audit>
 - Full workflow audit: <https://nicdunz.gumroad.com/l/agent-workflow-audit>
 
-Redacted source images, public static demos, export proof, and workflow notes only. Do not send private brand files, unreleased client assets, API keys, runtime AI credentials, or confidential product data. No custom asset generation or call is required.
+Redacted source images, public static demos, export proof, and workflow notes only. Do not send private brand files, unreleased client assets, API keys, runtime AI credentials, or confidential product data. No custom asset generation or call is required. The browser operator kit is self-serve material only; it does not include Chrome plugin repair, guaranteed automation, account access, custom setup, calls, or posting without human approval.
 
 ## Stack
 
