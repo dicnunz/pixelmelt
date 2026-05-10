@@ -35,6 +35,8 @@ interface CursorState {
   diameter: number
 }
 
+const SUPPORT_RECEIPT_URL = 'https://nicdunz.gumroad.com/l/smrimu'
+
 function formatCompactCount(value: number): string {
   return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(value)
 }
@@ -67,6 +69,7 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
   const lastGridPointRef = useRef<{ x: number; y: number } | null>(null)
   const [hudPayload, setHudPayload] = useState<FramePayload | null>(null)
   const [cursor, setCursor] = useState<CursorState>({ visible: false, x: 0, y: 0, diameter: 12 })
+  const [hasExportedClip, setHasExportedClip] = useState(false)
   const recording = usePixelMeltStore((state) => state.recording)
   const setRecording = usePixelMeltStore((state) => state.setRecording)
 
@@ -245,6 +248,7 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
       const timestamp = new Date().toISOString().replaceAll(':', '-')
       const sourceSlug = slugifyFilenamePart(sourceLabel)
       downloadBlob(blob, `pixelmelt-${sourceSlug}-${activePreset}-${timestamp}.webm`)
+      setHasExportedClip(true)
 
       usePixelMeltStore.getState().setRecording({
         status: 'done',
@@ -287,19 +291,36 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
             {formatUiLabel(activePreset)} scene • {formatUiLabel(activeTool)} brush • {paused ? 'paused' : 'live worker sim'}
           </div>
         </div>
-        <button
-          type="button"
-          onClick={() => void recordClip()}
-          disabled={exportDisabled}
-          className={cn(
-            'rounded-full border px-4 py-2 text-sm font-semibold transition',
-            exportDisabled
-              ? 'cursor-not-allowed border-white/10 bg-white/[0.03] text-white/45'
-              : 'border-[var(--pm-warm)] bg-[rgba(255,148,71,0.12)] text-white hover:bg-[rgba(255,148,71,0.2)]',
+        <div className="flex flex-col items-end gap-2">
+          <button
+            type="button"
+            onClick={() => void recordClip()}
+            disabled={exportDisabled}
+            className={cn(
+              'rounded-full border px-4 py-2 text-sm font-semibold transition',
+              exportDisabled
+                ? 'cursor-not-allowed border-white/10 bg-white/[0.03] text-white/45'
+                : 'border-[var(--pm-warm)] bg-[rgba(255,148,71,0.12)] text-white hover:bg-[rgba(255,148,71,0.2)]',
+            )}
+          >
+            Export 8s WebM
+          </button>
+          {hasExportedClip && (
+            <div className="max-w-[18rem] rounded-2xl border border-[var(--pm-warm)]/35 bg-[rgba(255,148,71,0.08)] px-3 py-2 text-right">
+              <a
+                href={SUPPORT_RECEIPT_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-white underline-offset-4 hover:underline"
+              >
+                Optional $5 support receipt
+              </a>
+              <p className="mt-1 text-xs leading-5 text-[var(--pm-text-muted)]">
+                PixelMelt stays local, free, and export-ready.
+              </p>
+            </div>
           )}
-        >
-          Export 8s WebM
-        </button>
+        </div>
       </div>
 
       <div className="relative flex flex-1 items-center justify-center px-6 py-6">
