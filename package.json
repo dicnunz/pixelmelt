@@ -2,10 +2,20 @@
   "name": "pixelmelt",
   "private": true,
   "version": "0.1.0",
-  "funding": {
-    "type": "custom",
-    "url": "https://nicdunz.gumroad.com/l/smrimu"
-  },
+  "funding": [
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/smrimu"
+    },
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit"
+    },
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/agent-workflow-audit"
+    }
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",

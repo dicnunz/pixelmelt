@@ -36,6 +36,8 @@ interface CursorState {
 }
 
 const SUPPORT_RECEIPT_URL = 'https://nicdunz.gumroad.com/l/smrimu'
+const MINI_AUDIT_URL = 'https://nicdunz.gumroad.com/l/agent-workflow-mini-audit'
+const WORKFLOW_AUDIT_URL = 'https://nicdunz.gumroad.com/l/agent-workflow-audit'
 
 function formatCompactCount(value: number): string {
   return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(value)
@@ -306,18 +308,37 @@ export const CanvasStage = forwardRef<CanvasStageHandle, CanvasStageProps>(funct
             Export 8s WebM
           </button>
           {hasExportedClip && (
-            <div className="max-w-[18rem] rounded-2xl border border-[var(--pm-warm)]/35 bg-[rgba(255,148,71,0.08)] px-3 py-2 text-right">
-              <a
-                href={SUPPORT_RECEIPT_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm font-semibold text-white underline-offset-4 hover:underline"
-              >
-                Optional $5 support receipt
-              </a>
+            <div className="max-w-[24rem] rounded-2xl border border-[var(--pm-warm)]/35 bg-[rgba(255,148,71,0.08)] px-3 py-2 text-right">
+              <div className="text-sm font-semibold text-white">Optional export audit</div>
               <p className="mt-1 text-xs leading-5 text-[var(--pm-text-muted)]">
-                PixelMelt stays local, free, and export-ready.
+                Redacted static demos only. No private brand files, API keys, or runtime AI credentials.
               </p>
+              <div className="mt-2 flex flex-wrap justify-end gap-2">
+                <a
+                  href={SUPPORT_RECEIPT_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-white/85 transition hover:border-white/30 hover:text-white"
+                >
+                  $5 receipt
+                </a>
+                <a
+                  href={MINI_AUDIT_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-[var(--pm-warm)]/45 bg-[rgba(255,148,71,0.12)] px-3 py-1 text-xs font-semibold text-white transition hover:bg-[rgba(255,148,71,0.2)]"
+                >
+                  Mini audit $149
+                </a>
+                <a
+                  href={WORKFLOW_AUDIT_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-[var(--pm-accent)]/35 bg-[rgba(109,226,196,0.1)] px-3 py-1 text-xs font-semibold text-white transition hover:bg-[rgba(109,226,196,0.18)]"
+                >
+                  Workflow audit $750
+                </a>
+              </div>
             </div>
           )}
         </div>
