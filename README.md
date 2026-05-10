@@ -20,6 +20,8 @@ Best results come from faces, masks, flowers, logos, and other bold silhouettes 
 - Start instantly with four seeded demo images included in the repo, including the generated `Astral Sigil` mask.
 - Deploy the build output as a static site.
 
+If PixelMelt saves you time, the smallest paid support path is the $5 Codex run receipt: <https://nicdunz.gumroad.com/l/smrimu>.
+
 ## Stack
 
 - Vite
