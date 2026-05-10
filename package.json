@@ -2,6 +2,10 @@
   "name": "pixelmelt",
   "private": true,
   "version": "0.1.0",
+  "funding": {
+    "type": "custom",
+    "url": "https://nicdunz.gumroad.com/l/smrimu"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
